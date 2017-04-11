@@ -1,4 +1,4 @@
-class WeightedQuickUnion:
+class QuickUnion:
   
   def __init__(self, n):
     self.table = list(range(n))
@@ -6,6 +6,7 @@ class WeightedQuickUnion:
 
   def _findRoot(self, index):
     while self.table[index] != index:
+      self.table[index] = self.table[self.table[index]]
       index = self.table[index]
     return index 
 
@@ -24,7 +25,7 @@ class WeightedQuickUnion:
     return self._findRoot(a) == self._findRoot(b)
     
 
-test = WeightedQuickUnion(10)
+test = QuickUnion(10)
 test.union(2,5)
 test.union(5,7)
 test.union(2,3)
